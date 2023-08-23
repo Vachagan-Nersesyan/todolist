@@ -1,9 +1,13 @@
 import React from 'react';
+import HeaderLastUpdateCompFunc from './HeaderDateComp/HeaderDateCompScp'
 
 function HeaderFuncComponent(props){
     return (
         <div>
-            This is Header
+            My Todo List
+            <div>
+                <HeaderLastUpdateCompFunc />
+            </div>
         </div>
     )
 }

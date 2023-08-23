@@ -3,7 +3,10 @@ import React from 'react';
 function TodoListFuncComponent(props){
     return (
         <div>
-            This is ToDoList
+            <ul>
+                <li>Learn JS</li>
+                <li>Learn React</li>
+            </ul>
         </div>
     )
 }
