@@ -1,8 +1,11 @@
 import React from 'react';
 
-function SearchFuncComponent(props){
+const SearchFuncComponent = (props) => {
     return (
         <div>
+            <div>
+                <input type='text' placeholder='Type text for search ...' />
+            </div>
             This is Header
         </div>
     )
