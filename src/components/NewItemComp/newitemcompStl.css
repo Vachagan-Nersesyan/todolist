@@ -1,0 +1,26 @@
+.item_section_content {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+}
+
+.item_section_content_in_item_1 {
+    width: 70%;
+}
+
+.item_section_content_in_item_1 input {
+    padding: 1em .5em;
+    font-family: 'Montserrat', sans-serif;
+    width: 100%;
+    border: none;
+    color: #f1faee;
+    font-weight: 800;
+    outline: none;
+    background-color: rgba(29,53,87,.6);
+}
+
+.item_section_content_in_item_2{
+    width: 20%;
+}

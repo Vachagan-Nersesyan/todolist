@@ -1,26 +1,26 @@
-import TodoListItemFuncComp from './TodoListItemsComp/TodoListItemScp'
+import TodoListItemComp from './TodoListItemsComp/TodoListItemScp'
+import './todolistStl.css'
 
-function TodoListFuncComponent(props){
+function TodoListComp(props){
 
     const items = [
-        {text:'Learn JS',important:true},
-        {text:'Learn React',important:false},
+        {id:1,text:'Learn JS',important:true},
+        {id:2,text:'Learn React',important:false},
+        
 
     ]
 
     const data = items.map((val) => {
-        return <TodoListItemFuncComp text={val.text} important={val.important} />
+        return <TodoListItemComp key={val.id} text={val.text} important={val.important} />
 
     })
 
     return (
-        <div>
-            <ul>
-                {data}
-            </ul>
+        <div className='to_do_list_section'>
+            {data}
         </div>
     )
 }
 
 
-export default TodoListFuncComponent
+export default TodoListComp

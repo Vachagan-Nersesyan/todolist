@@ -1,0 +1,25 @@
+.search_btn_itm{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search_btn_itm button{
+    width: 100%;
+    padding: .3em;
+    font-family: 'Tulpen One', cursive;
+    font-size: 1.5em;
+    border: 2px solid #e63946;
+    font-weight: 800;
+    background-color: #f1faee;
+
+    color: #e63946;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.search_btn_itm button:hover{
+    background-color: #e63946;
+    color: #f1faee;
+    transition: .3s;
+}

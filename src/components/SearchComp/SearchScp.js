@@ -1,14 +1,17 @@
-import {ButtonComp} from './ButtonComp/ButtonComp'
+import {SearchButtonComp} from './SearchButtonComp/ButtonComp'
+import './searchStl.css'
 
-
-const SearchFuncComponent = (props) => {
+const SearchComp = (props) => {
     return (
-        <div>
-            <input type='text' placeholder='Type text for search ...' />
+        <div className='search_content_section'>
+            <div className='search_content_section_item_1'>
+                <input type='text' placeholder='Type text for search ...' />
+
+            </div>
             
 
-            <div>
-                <ButtonComp color='red' btnText='Click to search'   />
+            <div className='search_content_section_item_2'>
+                <SearchButtonComp btnText='Click to search'   />
             </div>
         
         </div>
@@ -16,4 +19,4 @@ const SearchFuncComponent = (props) => {
 }
 
 
-export default SearchFuncComponent
+export default SearchComp

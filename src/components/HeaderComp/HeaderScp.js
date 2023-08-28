@@ -1,11 +1,13 @@
+import './headerStl.css'
 
-function HeaderFuncComponent(props){
+
+function HeaderComp(props){
     return (
-        <div>
+        <div className='header_section'>
             My Todo List
         </div>
     )
 }
 
 
-export default HeaderFuncComponent
+export default HeaderComp
