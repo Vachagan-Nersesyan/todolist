@@ -4,19 +4,9 @@ import './App.css';
 import HeaderFuncComponent from './components/HeaderComp/HeaderScp'
 import SearchFuncComponent from './components/SearchComp/SearchScp'
 import TodoListFuncComponent from './components/TodoListComp/TodoListScp'
-import UserFuncComponent from './components/UsersComp/UserCompScp'
-
+import NewItemFuncComp from './components/NewItemComp/NewItemCompScp'
 
 function App() {
-
-  const users = [
-    { name: 'John', age: 25, status: true },
-    { name: 'Bob', age: 30, status: false },
-    { name: 'Tom', age: 20, status: true },
-    { name: 'Sam', age: 28, status: false },
-    { name: 'Ann', age: 24, status: true },
-  ]
-
 
 
   return (
@@ -24,7 +14,7 @@ function App() {
         <HeaderFuncComponent />
         <SearchFuncComponent />
         <TodoListFuncComponent />
-        <UserFuncComponent usersComp={users} />
+        <NewItemFuncComp />
     </div>
   );
 }
