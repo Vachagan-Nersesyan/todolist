@@ -1,19 +1,17 @@
-import {SearchButtonComp} from './SearchButtonComp/ButtonComp'
+import BtnsComp from './BtnsComp/BtnsScp'
 import './searchStl.css'
 
 const SearchComp = (props) => {
     return (
         <div className='search_content_section'>
-            <div className='search_content_section_item_1'>
+            <div className='search_content_section_first_content'>
                 <input type='text' placeholder='Type text for search ...' />
 
             </div>
-            
-
-            <div className='search_content_section_item_2'>
-                <SearchButtonComp btnText='Click to search'   />
+            <div className='search_content_section_item_3'>
+                <BtnsComp />
             </div>
-        
+
         </div>
     )
 }

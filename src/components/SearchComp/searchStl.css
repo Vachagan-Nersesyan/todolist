@@ -1,18 +1,16 @@
 .search_content_section{
+    width: 100%;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: row;
+    flex-direction: column;
     margin-bottom: 2em;
 }
 
-
-
-.search_content_section_item_1 {
-    width: 70%;
+.search_content_section_first_content {
+    width: 98%;
+    margin-bottom: 2em;
 }
 
-.search_content_section_item_1 input {
+.search_content_section_first_content input {
     padding: 1em .5em;
     font-family: 'Montserrat', sans-serif;
     width: 100%;
@@ -23,6 +21,3 @@
     background-color: #f1faee;
 }
 
-.search_content_section_item_2{
-    width: 20%;
-}

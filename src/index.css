@@ -9,5 +9,13 @@ body {
   background-color: #f1faee;
 }
 
+.App {
+  padding: 3em;
+  background-color: #a8dadc;
+  margin: 2em auto;
+  width: 36em;
+  border-radius: 5px;
+
+}
 
 

@@ -1,0 +1,16 @@
+.header_number_content_section{
+    width: 100%;
+}
+
+.header_number_content_section_container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.header_number_content_section_container_in_item_1{
+    font-family: 'Tulpen One', cursive;
+    font-size: 2em;
+    margin-bottom: .1em;
+}

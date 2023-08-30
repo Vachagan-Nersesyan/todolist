@@ -1,0 +1,59 @@
+.btns_section_content{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+
+
+.btns_section_content_container_in_item_stl button{
+    font-family: 'Montserrat', sans-serif;
+    padding: 1em;
+    font-weight: 800;
+    cursor: pointer;
+    outline: none;
+
+}
+
+.btns_section_content_frst_btn button {
+    background-color: #c9ada7;
+    color: #4a4e69;
+    border: 2px solid #4a4e69;
+
+    transition: .3s;
+}
+
+.btns_section_content_frst_btn button:hover {
+    color: #c9ada7;
+    background-color: #4a4e69;
+    transition: .3s;
+}
+
+.btns_section_content_scnd_btn button {
+    background-color: #9e2a2b;
+    color: #fff3b0;
+    border: 2px solid #fff3b0;
+
+    transition: .3s;
+}
+
+.btns_section_content_scnd_btn button:hover {
+    color: #9e2a2b;
+    background-color: #fff3b0;
+    transition: .3s;
+}
+
+.btns_section_content_thrd_btn button {
+    background-color: #003566;
+    color: #ffd60a;
+    border: 2px solid #ffd60a;
+
+    transition: .3s;
+}
+
+.btns_section_content_thrd_btn button:hover {
+    color: #003566;
+    background-color: #ffd60a;
+    transition: .3s;
+}

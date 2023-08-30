@@ -1,17 +1,38 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import './index.css'
+
+import HeaderComp from './components/HeaderComp/HeaderScp'
+import SearchComp from './components/SearchComp/SearchScp'
+import TodoListComp from './components/TodoListComp/TodoListScp'
+import NewItemComp from './components/NewItemComp/NewItemCompScp'
+
+
+function App() {
+
+
+  const items = [
+    { id: 1, text: 'Learn JS', important: true },
+    { id: 2, text: 'Learn React', important: false },
+
+
+  ]
+
+  return (
+    <div className="App">
+      <HeaderComp />
+      <SearchComp />
+      <TodoListComp items={items} />
+      <NewItemComp />
+    </div>
+  );
+}
+
+
+
+
+export default App;
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+root.render(<App />);

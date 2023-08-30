@@ -1,6 +1,15 @@
 .header_section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    margin-bottom: 2em;
+}
+
+.header_section_title{
     font-size: 6em;
+    padding-right: 1em;
     text-align: center;
     font-family: 'Tulpen One', cursive;
-    margin-bottom: .7em;
+    margin-bottom: .1em;
 }
