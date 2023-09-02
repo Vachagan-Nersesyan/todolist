@@ -20,7 +20,7 @@ function App() {
 
   return (
     <div className="App">
-      <HeaderComp />
+      <HeaderComp done={16} important={25} />
       <SearchComp />
       <TodoListComp items={items} />
       <NewItemComp />

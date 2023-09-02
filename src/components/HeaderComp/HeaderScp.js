@@ -13,7 +13,7 @@ class HeaderComp extends Component{
                 </div>
     
                 <div className='header_section_numbers'>
-                    <HeaderNumberComp />
+                    <HeaderNumberComp {...this.props} />
                 </div>
             </div>
         )
