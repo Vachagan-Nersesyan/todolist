@@ -2,10 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css'
 
-import HeaderComp from './components/HeaderComp/HeaderScp'
-import SearchComp from './components/SearchComp/SearchScp'
-import TodoListComp from './components/TodoListComp/TodoListScp'
-import NewItemComp from './components/NewItemComp/NewItemCompScp'
+import HeaderComp from './components/HeaderComp'
+import SearchComp from './components/SearchComp'
+import TodoListComp from './components/TodoListComp'
+import NewItemComp from './components/NewItemComp'
 
 
 function App() {

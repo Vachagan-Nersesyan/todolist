@@ -79,3 +79,8 @@
     font-weight: 800;
     transition: .3s;
 }
+
+
+.to_do_list_item_section_content_first_item_in_item{
+    cursor: pointer;
+}
