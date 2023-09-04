@@ -4,6 +4,7 @@
     justify-content: space-between;
     align-items: center;
     flex-direction: row;
+    margin-bottom: 1em;
 }
 
 .item_section_content_in_item_1 {

@@ -7,10 +7,12 @@ class TodoListComp extends Component {
 
     render() {
 
-        const { items } = this.props
+        const { items , removeItem } = this.props
 
-        const data = items.map((val) => {
-            return <TodoListItemComp key={val.id} text={val.text} important={val.important} />
+        
+
+        const data = items.map((val,ind) => {
+            return <TodoListItemComp key={val.id} id={ind} removeItem={removeItem} valueid={ind} text={val.text} important={val.important}  />
 
         })
 
