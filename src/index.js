@@ -20,10 +20,13 @@ class App extends Component {
   }
 
   onAddItem = (str) =>{
+    
+    const id = this.state.items.length ? this.state.items[this.state.items.length - 1].id + 1 : 1
+
     const newItem = {
       text : str,
       important : false,
-      id : this.state.items[this.state.items.length - 1].id + 1
+      id 
     }
 
     this.setState((prevState) => {
@@ -44,13 +47,22 @@ class App extends Component {
     })
   }
 
+  changeTextFunc = (str,id) =>{
+    
+    let itemCloneArr = [...this.state.items]
+    itemCloneArr[id].text = str 
+    this.setState({
+      items: itemCloneArr
+    })
+  }
+
   render(){
     
     return (
       <div className="App">
         <HeaderComp done={16} important={25} />
         <SearchComp />
-        <TodoListComp removeItem={this.removeItem} items={this.state.items}  />
+        <TodoListComp changeTextFunc={this.changeTextFunc} removeItem={this.removeItem} items={this.state.items}  />
         <NewItemComp onAddItem={this.onAddItem} />
       </div>
     );
