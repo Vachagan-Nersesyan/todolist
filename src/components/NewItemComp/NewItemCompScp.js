@@ -35,7 +35,7 @@ class NewItemComp extends Component {
                 isValid : true,
             })
 
-            this.props.onAddItem(this.state.valueStr)
+            this.props.functionsObj.onAddItem(this.state.valueStr)
             this.setState({valueStr : ''})
 
         }

@@ -11,59 +11,86 @@ import NewItemComp from './components/NewItemComp'
 class App extends Component {
 
   state = {
-    items : [
-      { id: 1, text: 'Learn JS', important: true },
-      { id: 2, text: 'Learn React', important: false },
-  
-  
+    items: [
+      { id: 1, text: 'Learn JS', important: true, isDone: false },
+      { id: 2, text: 'Learn React', important: false, isDone: false },
+
+
     ]
   }
 
-  onAddItem = (str) =>{
-    
-    const id = this.state.items.length ? this.state.items[this.state.items.length - 1].id + 1 : 1
+  functionsObj = {
+    onDoneFunc: (id) => {
 
-    const newItem = {
-      text : str,
-      important : false,
-      id 
-    }
 
-    this.setState((prevState) => {
-      return {
-        items : [...prevState.items,newItem]
+
+      let copyState = { ...this.state }
+
+      copyState.items[id].isDone = (copyState.items[id].isDone) ? false : true
+
+      this.setState({
+        items: copyState.items
+      })
+
+    },
+    isImportantFunc: (id) => {
+
+
+      let copyState = { ...this.state }
+
+      copyState.items[id].important = (copyState.items[id].important) ? false : true
+
+      this.setState({
+        items: copyState.items
+      })
+    },
+    onAddItem: (str) => {
+
+      const id = this.state.items.length ? this.state.items[this.state.items.length - 1].id + 1 : 1
+
+      const newItem = {
+        text: str,
+        important: false,
+        id
       }
-    })
 
+      this.setState((prevState) => {
+        return {
+          items: [...prevState.items, newItem]
+        }
+      })
+
+    },
+
+    removeItem: (id) => {
+
+      let itemsClone = [...this.state.items]
+      itemsClone.splice(id, 1)
+      this.setState({
+        items: itemsClone
+
+      })
+    },
+    changeTextFunc : (str, id) => {
+
+      let itemCloneArr = [...this.state.items]
+      itemCloneArr[id].text = str
+      this.setState({
+        items: itemCloneArr
+      })
+    }
   }
 
-  removeItem = (id) => {
-    
-    let itemsClone = [...this.state.items]
-    itemsClone.splice(id,1)
-    this.setState({
-        items : itemsClone
-      
-    })
-  }
+  
 
-  changeTextFunc = (str,id) =>{
-    
-    let itemCloneArr = [...this.state.items]
-    itemCloneArr[id].text = str 
-    this.setState({
-      items: itemCloneArr
-    })
-  }
+  render() {
 
-  render(){
-    
     return (
       <div className="App">
         <HeaderComp done={16} important={25} />
         <SearchComp />
-        <TodoListComp changeTextFunc={this.changeTextFunc} removeItem={this.removeItem} items={this.state.items}  />
-        <NewItemComp onAddItem={this.onAddItem} />
+        <TodoListComp functionsObj={this.functionsObj} items={this.state.items} />
+        <NewItemComp functionsObj={this.functionsObj} />
       </div>
     );
   }
