@@ -3,56 +3,60 @@ import { Component } from 'react'
 import './newitemcompStl.css'
 import ItmButtonComp from './ItmButtonComp/ButtonCompScp'
 
-import ValidatorsComp from '../ValidatosComp/ValidatorsCompScp'
+import { ErrorMessagesFuncComp } from '../ErrorMessageComp/ErrorMessageScp'
+
+import { validateInput } from '../../utils/validator'
 
 
 class NewItemComp extends Component {
 
     state = {
-        valueStr : '',
-        isValid : true,
-        messageTp : ''
+        valueStr: '',
+        messageTp: '',
+
+        isErrorOrNot: false
     }
-    
-    valueChangeFunc(str){
+
+    valueChangeFunc(str) {
 
         this.setState({
-            valueStr : str.target.value
+            valueStr: str.target.value
         })
 
     }
 
-    isValidFunc(){
+    isValidFunc() {
 
-        
-        if(!this.state.valueStr){
-            this.setState({
-                isValid : false,
-                messageTp : 'errortp'
-            })
-        }else{
-            this.setState({
-                isValid : true,
-            })
 
+        if (validateInput(this.state.valueStr)) {
+            this.setState({ isErrorOrNot: true })
+            return
+        } else {
+            this.setState({
+                isErrorOrNot: false,
+                valueStr: ''
+            })
             this.props.functionsObj.onAddItem(this.state.valueStr)
-            this.setState({valueStr : ''})
 
         }
 
-        
+
     }
 
-    
+
 
 
     render() {
 
-        
+
 
         return (
             <div className='item_section_content_in_ovrl'>
+                {
+                    this.state.isErrorOrNot ? <ErrorMessagesFuncComp /> : null
+                }
                 <div className='item_section_content'>
+
                     <div className='item_section_content_in_item_1'>
                         <input onChange={(e) => this.valueChangeFunc(e)} value={this.state.valueStr} placeholder='Write text...' />
 
@@ -61,10 +65,6 @@ class NewItemComp extends Component {
                         <ItmButtonComp isValidFunc={() => this.isValidFunc()} />
                     </div>
 
-                </div>
-                <div className='item_section_in_sec_content'>
-                    
-                    {this.state.isValid ? null : <ValidatorsComp messageText='error'  />}
                 </div>
             </div>
         )

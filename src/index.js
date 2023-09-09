@@ -8,12 +8,14 @@ import TodoListComp from './components/TodoListComp'
 import NewItemComp from './components/NewItemComp'
 
 
+import {validateInput} from './utils/validator'
+
 class App extends Component {
 
   state = {
     items: [
-      { id: 1, text: 'Learn JS', important: true, isDone: false },
-      { id: 2, text: 'Learn React', important: false, isDone: false },
+      { id: 1, text: 'Learn JS', important: true, isDone: false ,isError : false },
+      { id: 2, text: 'Learn React', important: false, isDone: false ,isError : false},
 
 
     ]
@@ -45,6 +47,7 @@ class App extends Component {
       })
     },
     onAddItem: (str) => {
+
 
       const id = this.state.items.length ? this.state.items[this.state.items.length - 1].id + 1 : 1
 
