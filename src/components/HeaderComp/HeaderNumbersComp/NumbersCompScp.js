@@ -7,10 +7,10 @@ const HeaderNumberComp = ({done,important}) =>{
         <div className='header_number_content_section'>
             <div className='header_number_content_section_container'>
                 <div className='header_number_content_section_container_in_item_1'>
-                    Done : {done}
+                    Done : {done.length}
                 </div>
                 <div className='header_number_content_section_container_in_item_1'>
-                    Important : {important}
+                    Important : {important.length}
                 </div>
             </div>
         </div>

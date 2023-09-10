@@ -9,7 +9,7 @@ class TodoListComp extends Component {
 
         const { items ,functionsObj} = this.props
 
-
+        
 
         const data = items.map((val, ind) => {
             return <TodoListItemComp

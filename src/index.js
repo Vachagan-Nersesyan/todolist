@@ -8,17 +8,22 @@ import TodoListComp from './components/TodoListComp'
 import NewItemComp from './components/NewItemComp'
 
 
-import {validateInput} from './utils/validator'
 
 class App extends Component {
 
   state = {
-    items: [
-      { id: 1, text: 'Learn JS', important: true, isDone: false ,isError : false },
+
+    origArr : [
+      { id: 1, text: 'Learn JS', important: true, isDone: true ,isError : false },
       { id: 2, text: 'Learn React', important: false, isDone: false ,isError : false},
 
 
-    ]
+    ],
+
+    get items() {
+      return this.origArr
+    },
+
   }
 
   functionsObj = {
@@ -59,7 +64,8 @@ class App extends Component {
 
       this.setState((prevState) => {
         return {
-          items: [...prevState.items, newItem]
+          origArr : [...prevState.origArr, newItem],
+          items: [...prevState.items, newItem],
         }
       })
 
@@ -70,7 +76,8 @@ class App extends Component {
       let itemsClone = [...this.state.items]
       itemsClone.splice(id, 1)
       this.setState({
-        items: itemsClone
+        items: itemsClone,
+        origArr : itemsClone
 
       })
     },
@@ -81,17 +88,43 @@ class App extends Component {
       this.setState({
         items: itemCloneArr
       })
+    },
+
+    handleSearch : (text,tp) => {
+
+      
+      if(tp){
+
+        this.setState(() => {
+          
+          if(tp === 'all'){return {items:[...this.state.origArr]}}
+
+          return {
+            items:[
+              ...this.state.origArr.filter((val) => val[tp] === true)
+            ]
+          }
+        })
+        return
+      }
+      
+      this.setState({
+        items:[
+          ...this.state.origArr.filter((val) => val.text.includes(text))
+        ]
+      })
     }
   }
 
+  
   
 
   render() {
 
     return (
       <div className="App">
-        <HeaderComp done={16} important={25} />
-        <SearchComp />
+        <HeaderComp done={this.state.items.filter((val) => val.isDone === true)} important={this.state.items.filter((val) => val.important === true)}  />
+        <SearchComp functionsObj={this.functionsObj}/>
         <TodoListComp functionsObj={this.functionsObj} items={this.state.items} />
         <NewItemComp functionsObj={this.functionsObj} />
       </div>
