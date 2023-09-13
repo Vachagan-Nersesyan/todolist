@@ -14,13 +14,14 @@ class App extends Component {
   state = {
 
     items: [
-      { id: 1, text: 'Learn JS', important: true, isDone: true, isError: false },
+      { id: 1, text: 'Learn JS', important: true, isDone: false, isError: false },
       { id: 2, text: 'Learn React', important: false, isDone: false, isError: false },
 
 
     ],
 
-    term: ''
+    term: '',
+    filterTpText : ''
   }
 
   functionsObj = {
@@ -89,20 +90,56 @@ class App extends Component {
     handleSearch: (items, term) => {
 
 
+
       if (term.trim().length === 0) {
         return items
+
       }
 
       return items.filter((val) => {
         return val.text.toLowerCase().indexOf(term.toLowerCase()) > -1
       })
 
+
+
+
     },
 
-    onSearch : (term) => {
-      this.setState({term})
+    onSearch: (term) => {
 
-    }
+      this.setState({
+        term,
+      })
+
+    },
+
+    filterTpFunc : (filterTpText) => {
+      this.setState({
+        filterTpText
+      })
+    },
+
+    filterItemsFunc: (filterItmsArr,filterTp) => {
+
+
+      switch (filterTp) {
+        case 'all': {
+          return filterItmsArr.filter((val) => val)
+        }
+
+        case 'isDone': {
+          return filterItmsArr.filter((val) => val.isDone === true)
+        }
+
+        case 'important': {
+          return filterItmsArr.filter((val) => val.important === true)
+        }
+
+        default : {return filterItmsArr}
+      }
+
+    },
+
   }
 
 
@@ -111,16 +148,22 @@ class App extends Component {
   render() {
 
     const { items, term } = this.state
+
+
+
     const visibleItems = this.functionsObj.handleSearch(items, term)
-    
-    let doneItems = this.state.items.filter((val) => val.isDone === true)
-    let importantItems = this.state.items.filter((val) => val.important === true)
+    const visibleItemsOrig = this.functionsObj.filterItemsFunc(visibleItems,this.state.filterTpText)
+
+
+
+    let doneItems = this.state.items.filter((val) => val.isDone === true )
+    let importantItems = this.state.items.filter((val) => val.important === true && val.isDone === false)
 
     return (
       <div className="App">
         <HeaderComp done={doneItems} important={importantItems} />
         <SearchComp functionsObj={this.functionsObj} />
-        <TodoListComp functionsObj={this.functionsObj} items={visibleItems} />
+        <TodoListComp functionsObj={this.functionsObj} items={visibleItemsOrig} />
         <NewItemComp functionsObj={this.functionsObj} />
       </div>
     );
