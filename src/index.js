@@ -61,7 +61,6 @@ class App extends Component {
 
       this.setState((prevState) => {
         return {
-          origArr: [...prevState.origArr, newItem],
           items: [...prevState.items, newItem],
         }
       })
@@ -113,10 +112,13 @@ class App extends Component {
 
     const { items, term } = this.state
     const visibleItems = this.functionsObj.handleSearch(items, term)
+    
+    let doneItems = this.state.items.filter((val) => val.isDone === true)
+    let importantItems = this.state.items.filter((val) => val.important === true)
 
     return (
       <div className="App">
-        <HeaderComp done={this.state.items.filter((val) => val.isDone === true)} important={this.state.items.filter((val) => val.important === true)} />
+        <HeaderComp done={doneItems} important={importantItems} />
         <SearchComp functionsObj={this.functionsObj} />
         <TodoListComp functionsObj={this.functionsObj} items={visibleItems} />
         <NewItemComp functionsObj={this.functionsObj} />
