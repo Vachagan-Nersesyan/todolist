@@ -13,17 +13,14 @@ class App extends Component {
 
   state = {
 
-    origArr : [
-      { id: 1, text: 'Learn JS', important: true, isDone: true ,isError : false },
-      { id: 2, text: 'Learn React', important: false, isDone: false ,isError : false},
+    items: [
+      { id: 1, text: 'Learn JS', important: true, isDone: true, isError: false },
+      { id: 2, text: 'Learn React', important: false, isDone: false, isError: false },
 
 
     ],
 
-    get items() {
-      return this.origArr
-    },
-
+    term: ''
   }
 
   functionsObj = {
@@ -64,7 +61,7 @@ class App extends Component {
 
       this.setState((prevState) => {
         return {
-          origArr : [...prevState.origArr, newItem],
+          origArr: [...prevState.origArr, newItem],
           items: [...prevState.items, newItem],
         }
       })
@@ -77,11 +74,11 @@ class App extends Component {
       itemsClone.splice(id, 1)
       this.setState({
         items: itemsClone,
-        origArr : itemsClone
+        origArr: itemsClone
 
       })
     },
-    changeTextFunc : (str, id) => {
+    changeTextFunc: (str, id) => {
 
       let itemCloneArr = [...this.state.items]
       itemCloneArr[id].text = str
@@ -90,42 +87,38 @@ class App extends Component {
       })
     },
 
-    handleSearch : (text,tp) => {
+    handleSearch: (items, term) => {
 
-      
-      if(tp){
 
-        this.setState(() => {
-          
-          if(tp === 'all'){return {items:[...this.state.origArr]}}
-
-          return {
-            items:[
-              ...this.state.origArr.filter((val) => val[tp] === true)
-            ]
-          }
-        })
-        return
+      if (term.trim().length === 0) {
+        return items
       }
-      
-      this.setState({
-        items:[
-          ...this.state.origArr.filter((val) => val.text.includes(text))
-        ]
+
+      return items.filter((val) => {
+        return val.text.toLowerCase().indexOf(term.toLowerCase()) > -1
       })
+
+    },
+
+    onSearch : (term) => {
+      this.setState({term})
+
     }
   }
 
-  
-  
+
+
 
   render() {
 
+    const { items, term } = this.state
+    const visibleItems = this.functionsObj.handleSearch(items, term)
+
     return (
       <div className="App">
-        <HeaderComp done={this.state.items.filter((val) => val.isDone === true)} important={this.state.items.filter((val) => val.important === true)}  />
-        <SearchComp functionsObj={this.functionsObj}/>
-        <TodoListComp functionsObj={this.functionsObj} items={this.state.items} />
+        <HeaderComp done={this.state.items.filter((val) => val.isDone === true)} important={this.state.items.filter((val) => val.important === true)} />
+        <SearchComp functionsObj={this.functionsObj} />
+        <TodoListComp functionsObj={this.functionsObj} items={visibleItems} />
         <NewItemComp functionsObj={this.functionsObj} />
       </div>
     );

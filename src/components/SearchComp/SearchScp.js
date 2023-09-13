@@ -5,14 +5,22 @@ import './searchStl.css'
 
 class SearchComp extends Component {
 
-    // props.functionsObj={this.functionsObj}
+    
 
-  
-
-
-    searchInpValFunc(str){
-        this.props.functionsObj.handleSearch(str.target.value)
+    
+    state = {
+        term : ''
     }
+
+    onSearchChange = (e) => {
+        this.setState({
+            term : e.target.value
+        })
+
+        this.props.functionsObj.onSearch(e.target.value)
+    }
+
+
 
     
 
@@ -20,7 +28,7 @@ class SearchComp extends Component {
         return (
             <div className='search_content_section'>
                 <div className='search_content_section_first_content'>
-                    <input onChange={(e) => this.searchInpValFunc(e)} type='text'  placeholder='Type text for search ...' />
+                    <input onChange={this.onSearchChange} type='text' value={this.state.term} placeholder='Type text for search ...' />
     
                 </div>
                 <div className='search_content_section_item_3'>
